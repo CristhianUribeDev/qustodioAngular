@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Elemento } from 'src/interface/elemento.interface';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
-
+import { environment } from 'src/environments/environment';
 const descripciones: { [key: number]: string } = {
     0: 'NUEVO',
     1: 'REGISTRO CON CYPRESS',
@@ -16,7 +16,7 @@ const descripciones: { [key: number]: string } = {
 })
 export class ApiService {
 
-  private apiUrl = 'https://qustodio.newt.pe:9828'; // Reemplaza con la URL de tu API
+  private apiUrl = environment.api_url;
 
   constructor(private http: HttpClient) { }
 
