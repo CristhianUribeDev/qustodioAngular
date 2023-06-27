@@ -54,7 +54,7 @@
             <td mat-cell *matCellDef="let elemento">
                 <a mat-raised-button color="primary" [href]="red_url+elemento.id+'/paso01/'" target="_blank" class="boton">Paso 01</a>
                 <a mat-raised-button color="accent" [href]="red_url+elemento.id+'/paso02/'" target="_blank" class="boton">Paso 02</a>
-                <a *ngIf="elemento.url_browser_stack" mat-raised-button color="accent" [href]="elemento.url_browser_stack" target="_blank" class="boton">Brouser Stack</a>
+                <a *ngIf="elemento.url_browser_stack" mat-raised-button color="accent" [href]="elemento.url_browser_stack" target="_blank" class="boton">Browser Stack</a>
                 <a mat-raised-button color="warn" [href]="red_url+elemento.id+'/paso03/'" target="_blank" class="boton">Paso 03</a>
             </td>
         </ng-container>
