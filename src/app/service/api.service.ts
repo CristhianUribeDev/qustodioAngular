@@ -5,10 +5,10 @@ import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
 
 const descripciones: { [key: number]: string } = {
-    0: 'Opcion 0',
-    1: 'Opcion 1',
-    2: 'Opcion 2',
-    3: 'Opcion 3'
+    0: 'NUEVO',
+    1: 'REGISTRO CON CYPRESS',
+    2: 'REGISTRO CON MOVIL',
+    3: 'REGISTRO REGLA, TERMINO LA PRUEBA'
   };
 
 @Injectable({

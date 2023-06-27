@@ -32,3 +32,20 @@ h1 {
   .paginator{
     margin-top: 16px;
   }
+
+  .centered {
+    text-align: center;
+  }
+
+  .boton {
+    margin-left: 15px;
+  }
+  .demo-button-container {
+    padding-bottom: 16px;
+  }
+  
+  .demo-button + .demo-button {
+    margin-left: 8px;
+  }
+
+  
