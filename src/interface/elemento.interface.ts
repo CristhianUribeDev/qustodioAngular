@@ -8,4 +8,5 @@ export interface Elemento {
     estado: number
     descripcion_estado: string
     fecha: string
+    url_browser_stack :string
   }

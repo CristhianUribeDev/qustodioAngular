@@ -48,4 +48,24 @@ h1 {
     margin-left: 8px;
   }
 
+
+  .expandable-link {
+    position: relative;
+  }
+  
+  .expanded-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f9f9f9;
+    padding: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .expandable-link:hover + .expanded-links,
+  .expanded-links:hover {
+    display: block;
+  }
+
   

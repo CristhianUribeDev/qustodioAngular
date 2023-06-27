@@ -1,5 +1,5 @@
 <div class="table-container mat-table-responsive">
-    <h1>Lista de Pruebas {{tiempoRestante}}</h1>
+    <h1>Lista de Pruebas </h1>
     <div class="demo-button-container">
         <button mat-raised-button class="demo-button" (click)="registrar()">
             Agregar Prueba
@@ -35,14 +35,14 @@
 
         <ng-container matColumnDef="fecha">
             <th mat-header-cell *matHeaderCellDef class="centered">Fecha</th>
-            <td mat-cell *matCellDef="let elemento" class="centered">{{ elemento.fecha | date: 'EEEE, dd/MM/yyyy' }}
+            <td mat-cell *matCellDef="let elemento" class="centered">{{ elemento.fecha | date: 'EEEE, dd/MM/yyyy HH:mm:ss' }}
             </td>
         </ng-container>
 
-        <ng-container matColumnDef="estado">
+        <!-- <ng-container matColumnDef="estado">
             <th mat-header-cell *matHeaderCellDef class="centered">Estado</th>
             <td mat-cell *matCellDef="let elemento" class="centered">{{ elemento.estado }}</td>
-        </ng-container>
+        </ng-container> -->
 
         <ng-container matColumnDef="descripcion_estado">
             <th mat-header-cell *matHeaderCellDef class="centered">Descripcion Estado</th>
@@ -52,9 +52,10 @@
         <ng-container matColumnDef="Acciones">
             <th mat-header-cell *matHeaderCellDef class="centered">Acciones</th>
             <td mat-cell *matCellDef="let elemento">
-                <a mat-raised-button color="primary" [href]="red_url+elemento.id+'/paso01/'" class="boton">Paso 01</a>
-                <a mat-raised-button color="accent" [href]="red_url+elemento.id+'/paso02/'" class="boton">Paso 02</a>
-                <a mat-raised-button color="warn" [href]="red_url+elemento.id+'/paso03/'" class="boton">Paso 03</a>
+                <a mat-raised-button color="primary" [href]="red_url+elemento.id+'/paso01/'" target="_blank" class="boton">Paso 01</a>
+                <a mat-raised-button color="accent" [href]="red_url+elemento.id+'/paso02/'" target="_blank" class="boton">Paso 02</a>
+                <a *ngIf="elemento.url_browser_stack" mat-raised-button color="accent" [href]="elemento.url_browser_stack" target="_blank" class="boton">Brouser Stack</a>
+                <a mat-raised-button color="warn" [href]="red_url+elemento.id+'/paso03/'" target="_blank" class="boton">Paso 03</a>
             </td>
         </ng-container>
 
@@ -65,5 +66,5 @@
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons class="paginator" fxLayout="row"
         fxLayout.xs="column" fxLayoutAlign.xs="center" [length]="dataSource.length"></mat-paginator>
 
-
+        
 </div>

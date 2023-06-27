@@ -11,16 +11,19 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { EditComponent } from './edit/edit.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
+import { TecnologiesComponent } from './tecnologies/tecnologies.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    EditComponent
+    TecnologiesComponent
   ],
   imports: [
     BrowserModule,

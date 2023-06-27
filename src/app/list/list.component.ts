@@ -16,15 +16,25 @@ import Swal from 'sweetalert2';
 export class ListComponent  {
   @ViewChild(MatPaginator) paginator!: MatPaginator ;
   @ViewChild(MatSort) sort!: MatSort;
-  tiempoRestante: number = 300; // Tiempo en segundos
+  tiempoRestante: number = environment.tiempo_refresco; // Tiempo en segundos
   intervalId: any;
   red_url: String = environment.redirect_url;
 
   elementos: Elemento[] = [];
-  onSave!: Elemento;
+  onSave: Elemento = {
+    id: 0,
+    nombre: '',
+    correo: '',
+    clave: '',
+    nombre_dispositivo: '',
+    url: '',
+    estado: 0,
+    fecha: '',
+    descripcion_estado: '',
+    url_browser_stack:''
+  };;
   dataSource:any;
-  columnas: string[] = ['Nombre','Correo', 'Clave','nombre_dispositivo' ,'url','fecha', 
-                        'estado','descripcion_estado','Acciones'];
+  columnas: string[] = ['Nombre','Correo', 'Clave','nombre_dispositivo' ,'url','fecha','descripcion_estado','Acciones'];
 
   constructor(private api: ApiService){
     this.dataSource = new MatTableDataSource<Elemento>([]);
@@ -32,7 +42,7 @@ export class ListComponent  {
 
   ngOnInit() {
     this.obtenerData();
-    //this.startCountdown();
+    this.startCountdown();
   }
 
   obtenerData(){
@@ -49,7 +59,7 @@ export class ListComponent  {
         this.tiempoRestante--;
       } else {
         //clearInterval(this.intervalId);
-        this.tiempoRestante = 300;
+        this.tiempoRestante = environment.tiempo_refresco;
         this.obtenerData();
           // Hacer algo cuando la cuenta regresiva llegue a cero
         
@@ -79,12 +89,11 @@ export class ListComponent  {
       }
     }).then((result:any) => {
       if (result.isConfirmed) {
-        console.log(result.value.name); // Valor ingresado en el campo de nombre
-        this.onSave.nombre =result.value.name;
-        this.onSave.correo =result.value.email;
-        this.onSave.clave =result.value.clave;
-        this.onSave.nombre_dispositivo =result.value.nombre_dispositivo;
-        this.onSave.url =result.value.url;
+        this.onSave.nombre = result.value.name;
+        this.onSave.correo = result.value.email;
+        this.onSave.clave = result.value.clave;
+        this.onSave.nombre_dispositivo = result.value.nombre_dispositivo;
+        this.onSave.url = result.value.url;
         this.api.enviarDatos(this.onSave).subscribe(
           (response: any) => {
             Swal.fire({
@@ -93,6 +102,7 @@ export class ListComponent  {
               icon: 'success',
               confirmButtonText: 'Aceptar'
             });
+            this.obtenerData();
           },
           (error: any) => {
             Swal.fire({
